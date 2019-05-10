@@ -44,20 +44,4 @@ let isLeader = (req, res, next) => {
 
 //==================  routes  ==================//
 
-router.get("/users/new", isAuthenticated, isAdmin, (req, res, next) => {
-  res.render("newuser");
-});
-
-router.post("/users/new", isAuthenticated, isAdmin, (req, res, next) => {
-  req.body.password = bcrypt.hashSync(
-    req.body.password,
-    bcrypt.genSaltSync(bcryptSalt)
-  );
-  req.body.employee = req.body.employee == "on";
-  req.body.teamleader = req.body.teamleader == "on";
-  User.create(req.body).then(user => {
-    res.redirect("/");
-  });
-});
-
 module.exports = router;

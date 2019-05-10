@@ -1,25 +1,41 @@
-<form action="/users/new" method="POST">
+<form action="/admin/users/new" method="POST">
   <div class="form-group">
-    <label for="exampleInputEmail1">Username</label>
-    <input type="text" name="username" class="form-control" placeholder="Enter username">
+    <label for="Username">Prénom Nom</label>
+    <input type="text" name="username" class="form-control" placeholder="Saisir le Prénom et le Nom">
   </div>
   <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
+    <label for="email">Email</label>
     <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-      placeholder="Enter email">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      placeholder="Saisir l'adresse email">
   </div>
   <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    <label for="password">Mot de passe</label>
+    <input type="password" name="password" class="form-control" id="exampleInputPassword1"
+      placeholder="Saisir un mot de passe">
   </div>
   <div class="form-group">
-    <label for="exampleInputEmail1">Position</label>
-    <input type="text" name="position" class="form-control" placeholder="Enter username">
+    <label for="quote">Citation favorite</label>
+    <input type="quote" name="quote" class="form-control" id="exampleInputPassword1" placeholder="Saisir une citation">
+  </div>
+  <div class="form-group">
+    <label for="role">Role</label>
+    <select type="text" name="role" class="form-control" placeholder="role">
+      <option>Data Scientist
+      <option>Développeur
+      <option>Finance
+      <option>Insigths & Mesure
+      <option>Projet
+      <option>UX/UI
+      <option>Autre
+    </select>
   </div>
   <div class="form-group form-check">
-    <input type="checkbox" name="intern" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Intern</label>
+    <input type="checkbox" name="employee" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Employé</label>
+  </div>
+  <div class="form-group form-check">
+    <input type="checkbox" name="teamleader" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Team Leader</label>
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>

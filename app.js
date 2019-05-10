@@ -80,6 +80,9 @@ app.use("/login", authRoutes);
 const adminRoutes = require("./routes/admin");
 app.use("/admin", adminRoutes);
 
+const leaderRoutes = require("./routes/leader");
+app.use("/lead", leaderRoutes);
+
 const index = require("./routes/index");
 app.use("/", index);
 

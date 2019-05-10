@@ -52,13 +52,13 @@ router.get("/rights", isAuthenticated, (req, res, next) => {
   res.render("rights");
 });
 
-router.get("/admin/people", isAuthenticated, (req, res, next) => {
+router.get("/people", isAuthenticated, (req, res, next) => {
   User.find().then(users => {
     res.render("people", { users });
   });
 });
 
-router.get("/admin/projects", isAuthenticated, (req, res, next) => {
+router.get("/projects", isAuthenticated, (req, res, next) => {
   Project.find().then(projects => {
     res.render("projects", { projects });
   });
@@ -94,16 +94,16 @@ router.get("/users/archive/:id", (req, res, next) => {
   });
 });
 
-router.post("/users/new", (req, res, next) => {
-  req.body.password = bcrypt.hashSync(
-    req.body.password,
-    bcrypt.genSaltSync(bcryptSalt)
-  );
-  req.body.intern = req.body.intern == "on";
-  User.create(req.body).then(user => {
-    res.redirect("/");
-  });
-});
+// router.post("/users/new", (req, res, next) => {
+//   req.body.password = bcrypt.hashSync(
+//     req.body.password,
+//     bcrypt.genSaltSync(bcryptSalt)
+//   );
+//   req.body.intern = req.body.intern == "on";
+//   User.create(req.body).then(user => {
+//     res.redirect("/");
+//   });
+// });
 
 module.exports = router;
 

@@ -12,9 +12,10 @@ const userSchema = new Schema(
     },
 
     password: { type: String, required: true },
+    quote: { type: String, required: true },
     administrator: Boolean,
-    teamleader: Boolean,
-    employee: Boolean,
+    teamleader: { type: Boolean, required: true },
+    employee: { type: Boolean, required: true },
     role: {
       type: String,
       enum: [
