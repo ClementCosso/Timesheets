@@ -1,32 +1,32 @@
 module.exports = [
   {
-    "title": "labore"
+    title: "labore"
   },
   {
-    "title": "veniam"
+    title: "veniam"
   },
   {
-    "title": "id"
+    title: "id"
   },
   {
-    "title": "magna"
+    title: "magna"
   },
   {
-    "title": "consectetur"
+    title: "consectetur"
   },
   {
-    "title": "quis"
+    title: "quis"
   },
   {
-    "title": "officia"
+    title: "officia"
   },
   {
-    "title": "aute"
+    title: "aute"
   },
   {
-    "title": "ut"
+    title: "ut"
   },
   {
-    "title": "elit"
+    title: "elit"
   }
-]
+];

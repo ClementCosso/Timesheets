@@ -8,7 +8,7 @@ module.exports = [
     administrator: true,
     employee: true,
     teamleader: true,
-    email: "mendezdickerson@coash.com",
+    email: "clement@relevanc.com",
     role: "Projet",
     password: bcrypt.hashSync("1234", bcrypt.genSaltSync(bcryptSalt))
   },
