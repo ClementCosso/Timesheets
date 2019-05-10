@@ -56,7 +56,45 @@ router.post("/users/new", isAuthenticated, isAdmin, (req, res, next) => {
   req.body.employee = req.body.employee == "on";
   req.body.teamleader = req.body.teamleader == "on";
   User.create(req.body).then(user => {
-    res.redirect("/");
+    res.redirect("/people");
+  });
+});
+
+router.get("/users/delete/:id", isAuthenticated, isAdmin, (req, res, next) => {
+  User.deleteOne({ _id: req.params.id }).then(_ => {
+    res.redirect("/people");
+  });
+});
+
+router.get("/users/archive/:id", isAuthenticated, isAdmin, (req, res, next) => {
+  User.updateOne({ _id: req.params.id }, { $set: { hidden: true } }).then(_ => {
+    res.redirect("/people");
+  });
+});
+
+// router.get("/users/edit/:id", (req, res, next) => {
+//   User.updateOne({ _id: req.params.id }).then(_ => {
+//     res.redirect("/people");
+//   });
+// });
+
+router.get("/users/edit/:id", isAuthenticated, isAdmin, (req, res, next) => {
+  User.findById(req.params.id).then(user => {
+    res.render("useredit", { user });
+  });
+});
+
+router.post("/users/edit/:id", isAuthenticated, isAdmin, (req, res, next) => {
+  const updatedUser = {
+    username: req.body.username,
+    email: req.body.email,
+    password: req.body.password,
+    quote: req.body.quote,
+
+    role: req.body.role
+  };
+  User.updateOne({ _id: req.params.id }, updatedUser).then(user => {
+    res.redirect("/people");
   });
 });
 

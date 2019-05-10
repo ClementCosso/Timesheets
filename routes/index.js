@@ -44,8 +44,10 @@ let isLeader = (req, res, next) => {
 
 //==================  routes  ==================//
 
-router.get("/admin", isAuthenticated, (req, res, next) => {
-  res.render("index");
+router.get("/", isAuthenticated, (req, res, next) => {
+  Project.find().then(projects => {
+    res.render("index");
+  });
 });
 
 router.get("/rights", isAuthenticated, (req, res, next) => {
@@ -64,12 +66,6 @@ router.get("/projects", isAuthenticated, (req, res, next) => {
   });
 });
 
-router.get("/", isAuthenticated, (req, res, next) => {
-  Project.find().then(projects => {
-    res.render("index");
-  });
-});
-
 router.post("/calendar/new", isAuthenticated, (req, res, next) => {
   let calendar = req.body;
   calendar.user = req.user._id;
@@ -81,18 +77,6 @@ router.post("/calendar/new", isAuthenticated, (req, res, next) => {
 // router.get("/users/new", (req, res, next) => {
 //   res.render("newuser");
 // });
-
-router.get("/users/delete/:id", (req, res, next) => {
-  User.deleteOne({ _id: req.params.id }).then(_ => {
-    res.redirect("/");
-  });
-});
-
-router.get("/users/archive/:id", (req, res, next) => {
-  User.updateOne({ _id: req.params.id }, { $set: { hidden: true } }).then(_ => {
-    res.redirect("/");
-  });
-});
 
 // router.post("/users/new", (req, res, next) => {
 //   req.body.password = bcrypt.hashSync(
