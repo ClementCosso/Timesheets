@@ -27,7 +27,7 @@ let isAdmin = (req, res, next) => {
     next(); // ==> go to the next route ---
   } else {
     //    |
-    res.redirect("/"); //    |
+    res.redirect("/rights"); //    |
   } //    |
 };
 
@@ -38,7 +38,7 @@ let isLeader = (req, res, next) => {
     next(); // ==> go to the next route ---
   } else {
     //    |
-    res.redirect("/"); //    |
+    res.redirect("/rights"); //    |
   } //    |
 };
 
@@ -66,11 +66,29 @@ router.get("/projects", isAuthenticated, (req, res, next) => {
   });
 });
 
+router.get("/calendar", isAuthenticated, (req, res, next) => {
+  User.findOne({ _id: req.user._id }).then(user => {
+    Calendar.find({ user: user._id }).then(calendars => {
+      calendars.sort(function(a, b) {
+        return a.week - b.week;
+      });
+      console.log(calendars);
+      res.render("calendar", { calendars, user });
+    });
+  });
+});
+
+router.get("/calendar/new", isAuthenticated, (req, res, next) => {
+  Project.find().then(projects => {
+    res.render("newcalendar", { projects });
+  });
+});
+
 router.post("/calendar/new", isAuthenticated, (req, res, next) => {
   let calendar = req.body;
   calendar.user = req.user._id;
   Calendar.create(calendar).then(_ => {
-    res.redirect("/");
+    res.redirect("/calendar");
   });
 });
 
