@@ -6,7 +6,7 @@ const CalSchema = new Schema(
   {
     user: { type: ObjectId, ref: "User" },
     week: { type: Number, min: 0, max: 52 },
-    work: [
+    works: [
       {
         project: { type: ObjectId, ref: "Project" },
         time: { type: Number, min: 0, max: 7 }

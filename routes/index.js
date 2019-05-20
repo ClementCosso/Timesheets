@@ -87,6 +87,7 @@ router.get("/calendar/new", isAuthenticated, (req, res, next) => {
 router.post("/calendar/new", isAuthenticated, (req, res, next) => {
   let calendar = req.body;
   calendar.user = req.user._id;
+
   Calendar.create(calendar).then(_ => {
     res.redirect("/calendar");
   });

@@ -43,7 +43,7 @@ User.deleteMany()
     let created_projects = results[1];
     calendars.forEach(cal => {
       cal.user = created_users[cal.user]._id;
-      cal.work.forEach(
+      cal.works.forEach(
         work => (work.project = created_projects[work.project]._id)
       );
     });
